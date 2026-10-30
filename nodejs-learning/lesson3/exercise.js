@@ -51,3 +51,18 @@ function downloadFile(){
 downloadFile().then((result)=>{
     console.log(result)
 })
+//Add error handling
+const age=39
+function checkAge(age){
+return new Promise((resolve,reject)=>{
+    if(age>=18){
+        resolve("access granted")
+    }else{
+        reject('Access denied')
+    }
+
+})
+}
+checkAge(age)
+.then((result)=>{console.log(result)})
+.catch((err)=>{console.log(err)})
