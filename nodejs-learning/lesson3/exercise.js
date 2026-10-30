@@ -33,3 +33,10 @@ registerStudent(studentName, (err, result) => {
   }
   console.log(result)
 });
+
+console.log("Downloading file")
+
+setTimeout(()=>{
+console.log('Download Complete')
+},3000)
+console.log("you can continue working")
