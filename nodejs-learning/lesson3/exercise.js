@@ -33,10 +33,21 @@ registerStudent(studentName, (err, result) => {
   }
   console.log(result)
 });
-
+//Async with settimeout
 console.log("Downloading file")
 
 setTimeout(()=>{
 console.log('Download Complete')
 },3000)
 console.log("you can continue working")
+//Promise with setTimeout
+function downloadFile(){
+    return new Promise((resolve)=>{
+       setTimeout(()=>{
+      resolve("file downloaded successfully")
+       },2000) 
+    })
+}
+downloadFile().then((result)=>{
+    console.log(result)
+})
