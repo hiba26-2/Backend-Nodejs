@@ -1,0 +1,2 @@
+Today I learned Node.js
+I also learned about the fs module
