@@ -1,0 +1,17 @@
+[
+  {
+    "name": "John",
+    "age": 20,
+    "department": "CS"
+  },
+  {
+    "name": "Sara",
+    "age": 19,
+    "department": "Chemistry"
+  },
+  {
+    "name": "Meron",
+    "age": 20,
+    "department": "IS"
+  }
+]

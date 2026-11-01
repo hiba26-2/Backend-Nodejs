@@ -69,7 +69,7 @@ console.log(info.isFile());
 
 const info1=fs.statSync("./school")
 console.log(info1.isDirectory());
-*/
+
 fs.mkdirSync("Projects",{recursive:true})
 fs.writeFileSync("./Projects/project1.txt","This is 1")
 fs.writeFileSync("./Projects/project2.txt","This is 2")
@@ -81,3 +81,5 @@ fs.rmSync("Projects",{ recursive: true, force: true })
 if(fs.existsSync("Projects")){
     console.log("After deletion: true")}
 else{console.log(("After deletion :false"))}
+*/
+//Working with JSON file
