@@ -18,7 +18,7 @@ if(fs.existsSync("old-notes.txt")){
     console.log(true)
 }else{
      console.log(false)
-}*/
+}
 try{
 const data=fs.readFileSync("unkown.txt","utf8")
 console.log(data);
@@ -29,7 +29,7 @@ console.log(data);
         console.log("Error:",err.code);
     }
 }
-*/
+
 
 fs.writeFileSync("message.txt","Leaning asynchronous Node.js")
 fs.readFile("message.txt","utf8",(err,data)=>{
@@ -53,7 +53,7 @@ async function manageFile(){
     }
 }
 manageFile();
-*/
+
 if(!fs.existsSync("school")){
     fs.mkdirSync("school")
 }
@@ -69,3 +69,15 @@ console.log(info.isFile());
 
 const info1=fs.statSync("./school")
 console.log(info1.isDirectory());
+*/
+fs.mkdirSync("Projects",{recursive:true})
+fs.writeFileSync("./Projects/project1.txt","This is 1")
+fs.writeFileSync("./Projects/project2.txt","This is 2")
+if (fs.existsSync("Projects")) {
+    console.log("Before deletion: true");
+}
+else{("Before deletion:false")}
+fs.rmSync("Projects",{ recursive: true, force: true })
+if(fs.existsSync("Projects")){
+    console.log("After deletion: true")}
+else{console.log(("After deletion :false"))}
