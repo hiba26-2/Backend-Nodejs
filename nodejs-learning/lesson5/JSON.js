@@ -16,9 +16,23 @@ const students=[
     age:20,
     department:"IS"
     },
-
+   
 ]
 const jsonData=JSON.stringify(students,null,2)
 fs.writeFileSync("students.json",jsonData)
 const data=JSON.parse(fs.readFileSync("students.json","utf8"))
-console.log(students[2].name);
+data[1].age=22
+
+
+data.push({
+    name: "David",
+    age: 23,
+    department: "Software Engineering"
+});
+
+fs.writeFileSync("students.json", JSON.stringify(data, null, 2));
+for(let i=0;i<data.length;i++){
+console.log(data[i].name);
+console.log(data[i].age);
+console.log(data[i].department);
+}

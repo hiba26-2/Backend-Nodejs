@@ -6,12 +6,17 @@
   },
   {
     "name": "Sara",
-    "age": 19,
+    "age": 22,
     "department": "Chemistry"
   },
   {
     "name": "Meron",
     "age": 20,
     "department": "IS"
+  },
+  {
+    "name": "David",
+    "age": 23,
+    "department": "Software Engineering"
   }
 ]
