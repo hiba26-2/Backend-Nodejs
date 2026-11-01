@@ -1,5 +1,5 @@
-const { log } = require("console")
-const fs=require("fs")
+const fs=require("fs/promises")
+
 /*
 fs.writeFileSync("student.txt","I am learning node")
 const data=fs.readFileSync("student.txt","utf8")
@@ -28,7 +28,7 @@ console.log(data);
         console.log("Error:",err.code);
     }
 }
-*/
+
 
 fs.writeFileSync("message.txt","Leaning asynchronous Node.js")
 fs.readFile("message.txt","utf8",(err,data)=>{
@@ -40,3 +40,15 @@ fs.readFile("message.txt","utf8",(err,data)=>{
     console.log("Program Finished");
 })
 console.log("Reading File...");
+*/
+
+async function manageFile(){
+   await fs.writeFile("task.txt","I am learning async and await")
+    try{
+       const data= await fs.readFile("task.txt","utf8")
+    console.log(data);
+    }catch(err){
+        console.log('Error',err.message);
+    }
+}
+manageFile();
