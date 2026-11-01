@@ -1,5 +1,6 @@
-const fs=require("fs/promises")
-
+const { execSync } = require("child_process")
+//const fs=require("fs/promises")
+const fs=require("fs")
 /*
 fs.writeFileSync("student.txt","I am learning node")
 const data=fs.readFileSync("student.txt","utf8")
@@ -40,7 +41,7 @@ fs.readFile("message.txt","utf8",(err,data)=>{
     console.log("Program Finished");
 })
 console.log("Reading File...");
-*/
+
 
 async function manageFile(){
    await fs.writeFile("task.txt","I am learning async and await")
@@ -52,3 +53,19 @@ async function manageFile(){
     }
 }
 manageFile();
+*/
+if(!fs.existsSync("school")){
+    fs.mkdirSync("school")
+}
+fs.writeFileSync("school/student.txt", "Student information");
+fs.writeFileSync("school/teacher.txt", "Teacher information");
+
+const data =fs.readdirSync("school")
+console.log(data);
+
+const info =fs.statSync("./school/student.txt")
+
+console.log(info.isFile());
+
+const info1=fs.statSync("./school")
+console.log(info1.isDirectory());
