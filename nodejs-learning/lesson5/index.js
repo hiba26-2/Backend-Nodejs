@@ -18,7 +18,7 @@ if(fs.existsSync("old-notes.txt")){
     console.log(true)
 }else{
      console.log(false)
-}
+}*/
 try{
 const data=fs.readFileSync("unkown.txt","utf8")
 console.log(data);
@@ -29,7 +29,7 @@ console.log(data);
         console.log("Error:",err.code);
     }
 }
-
+*/
 
 fs.writeFileSync("message.txt","Leaning asynchronous Node.js")
 fs.readFile("message.txt","utf8",(err,data)=>{
