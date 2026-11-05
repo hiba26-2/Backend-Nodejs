@@ -13,4 +13,5 @@ console.log(extension);
 const directoryPath = path.dirname("/data/student.json");
 
 console.log(directoryPath);
-//ex5
+
+
