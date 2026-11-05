@@ -13,5 +13,9 @@ console.log(extension);
 const directoryPath = path.dirname("/data/student.json");
 
 console.log(directoryPath);
+//ex 7
 
+console.log(__dirname);
+console.log(__filename);
+console.log(path.basename(__filename));
 
