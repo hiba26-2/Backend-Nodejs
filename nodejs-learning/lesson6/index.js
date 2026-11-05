@@ -8,4 +8,7 @@ console.log(filename);
 //ex3
 const extension=path.extname(filepath)
 console.log(extension);
-//
+//ex4
+const directoryPath = path.dirname("/data/student.json");
+
+console.log(directoryPath);
