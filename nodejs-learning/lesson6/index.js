@@ -1,3 +1,4 @@
+const { readFileSync } = require("fs");
 const path =require("path")
 //ex 1
 const filepath=path.join("data","students.json")
@@ -12,3 +13,4 @@ console.log(extension);
 const directoryPath = path.dirname("/data/student.json");
 
 console.log(directoryPath);
+//ex5
