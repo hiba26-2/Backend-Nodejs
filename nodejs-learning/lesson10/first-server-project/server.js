@@ -1,13 +1,15 @@
 
 const http = require("http");
 
-const products = [
-  { id: 1, name: "Laptop", category: "electronics", price: 900 },
-  { id: 2, name: "Mobile", category: "electronics", price: 500 },
-  { id: 3, name: "Chair", category: "furniture", price: 120 },
-  { id: 4, name: "Desk", category: "furniture", price: 250 }
-];
+const fs = require("fs/promises");
+const path = require("path");
 
+const dataFile = path.join(__dirname, "data", "products.json");
+
+async function getProducts() {
+  const text = await fs.readFile(dataFile, "utf8");
+  return JSON.parse(text);
+}
 // Helper for JSON responses
 function sendJSON(res, statusCode, data) {
   res.statusCode = statusCode;
