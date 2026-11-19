@@ -7,7 +7,7 @@ const server=http.createServer(
         }else if(req.url==="/about"){
             req.end("About Page")
         }else {
-      res.end("Page Not Found");
+            res.end("Page Not Found");
     }
     }
 )
