@@ -1,56 +1,64 @@
-
 const http = require("http");
-
 const fs = require("fs/promises");
 const path = require("path");
 
+const PORT = 3000;
 const dataFile = path.join(__dirname, "data", "products.json");
 
-async function getProducts() {
-  const text = await fs.readFile(dataFile, "utf8");
-  return JSON.parse(text);
-}
-// Helper for JSON responses
 function sendJSON(res, statusCode, data) {
   res.statusCode = statusCode;
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
 }
 
-const server = http.createServer((req, res) => {
-  const url = new URL(req.url, "http://localhost:3000");
+async function getProducts() {
+  const text = await fs.readFile(dataFile, "utf8");
+  return JSON.parse(text);
+}
 
-  if (url.pathname === "/") {
-    res.statusCode = 200;
-    res.end("Welcome To My First Server");
+const routes = {
+  "GET /": async (req, res, url) => {
+    sendJSON(res, 200, { message: "Welcome To My First Server" });
+  },
 
-  } else if (url.pathname === "/about") {
-    res.statusCode = 200;
-    res.end("About Page");
+  "GET /about": async (req, res, url) => {
+    sendJSON(res, 200, { message: "About Page" });
+  },
 
-  } else if (url.pathname === "/contact") {
-    res.statusCode = 200;
-    res.end("Contact Page");
+  "GET /contact": async (req, res, url) => {
+    sendJSON(res, 200, { message: "Contact Page" });
+  },
 
-  } else if (req.method === "GET" && url.pathname === "/products") {
+  "GET /products": async (req, res, url) => {
+    const products = await getProducts();
     const category = url.searchParams.get("category");
 
     if (category) {
-      const filtered = products.filter(
-        (p) => p.category === category
-      );
-
-      sendJSON(res, 200, filtered);
+      sendJSON(res, 200, products.filter((p) => p.category === category));
     } else {
       sendJSON(res, 200, products);
     }
+  }
+};
 
-  } else {
-    sendJSON(res, 404, { error: "Route not found" });
+const server = http.createServer(async (req, res) => {
+  const url = new URL(req.url, `http://localhost:${PORT}`);
+  const handler = routes[req.method + " " + url.pathname];
+
+  console.log(req.method, req.url);
+
+  try {
+    if (handler) {
+      await handler(req, res, url);
+    } else {
+      sendJSON(res, 404, { error: "Route not found" });
+    }
+  } catch (err) {
+    console.log("Error:", err.message);
+    sendJSON(res, 500, { error: "Something went wrong" });
   }
 });
 
-
-server.listen(3000, () => {
-  console.log("Server Running On Port 3000");
+server.listen(PORT, () => {
+  console.log(`Server Running On Port ${PORT}`);
 });
