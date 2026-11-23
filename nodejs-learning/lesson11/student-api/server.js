@@ -21,5 +21,6 @@ let students = [
 ];
 
 let nextId = 4;
-
+const student =students.find((s)=>s.id===2)
+console.log(student);
  
