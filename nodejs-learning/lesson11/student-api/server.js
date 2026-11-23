@@ -20,7 +20,7 @@ let students = [
   }
 ];
 
-let nextId = 5;
+let nextId = 4;
 const student =students.find((s)=>s.id===2)
 console.log(student);
  
@@ -28,9 +28,24 @@ const index=students.findIndex((s)=>s.id===3)
 console.log(index);
 
 students.push({
-  id:4,
+  id:nextId++,
   name: "John Smith",
   age: 28,
   course: "Science"
 })
 console.log(students);
+//students.splice(0,1);
+
+//search and then remove
+const Index = students.findIndex((s) => s.id === 2);
+
+if (Index !== -1) {
+  students.splice(Index, 1);
+}
+console.log(students);
+//spread operator
+const updatestudent={
+  ...student,
+  course:"Information systems"
+}
+console.log(updatestudent);
