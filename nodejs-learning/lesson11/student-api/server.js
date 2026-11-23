@@ -24,3 +24,5 @@ let nextId = 4;
 const student =students.find((s)=>s.id===2)
 console.log(student);
  
+const index=students.findIndex((s)=>s.id===3)
+console.log(index);
