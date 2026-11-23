@@ -58,9 +58,24 @@ const server = http.createServer((req, res) => {
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/json");
     res.end(JSON.stringify(students));
-  }
+  }else if (req.url.startsWith("/students/") && req.method === "GET") {
+    const parts = req.url.split("/");
+    const id = Number(parts[2]);
 
-});
+    const student = students.find((s) => s.id === id);
+
+    res.setHeader("Content-Type", "application/json");
+
+    if (student) {
+      res.statusCode = 200;
+      res.end(JSON.stringify(student));
+    } else {
+      res.statusCode = 404;
+      res.end(JSON.stringify({ message: "Student not found" }));
+    }
+
+};
+})
 
 // Start server
 server.listen(3000, () => {
