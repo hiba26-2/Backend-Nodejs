@@ -1,4 +1,5 @@
 const http = require("http");
+
 let students = [
   {
     id: 1,
@@ -49,3 +50,19 @@ const updatestudent={
   course:"Information systems"
 }
 console.log(updatestudent);
+
+const server = http.createServer((req, res) => {
+
+  // GET all students
+  if (req.url === "/students" && req.method === "GET") {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify(students));
+  }
+
+});
+
+// Start server
+server.listen(3000, () => {
+  console.log("Server running on http://localhost:3000");
+});
