@@ -20,9 +20,17 @@ let students = [
   }
 ];
 
-let nextId = 4;
+let nextId = 5;
 const student =students.find((s)=>s.id===2)
 console.log(student);
  
 const index=students.findIndex((s)=>s.id===3)
 console.log(index);
+
+students.push({
+  id:4,
+  name: "John Smith",
+  age: 28,
+  course: "Science"
+})
+console.log(students);
